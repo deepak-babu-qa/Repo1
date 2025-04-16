@@ -10,6 +10,7 @@ jobs:
     steps:
 
     - name: Stop SonarQube if no scans are in progress
+      if: always()
       run: |
         echo "Checking for active SonarQube scans..."
         RESPONSE=$(curl -s "http://13.201.109.77:9000/api/ce/activity?status=IN_PROGRESS")
@@ -22,5 +23,5 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{"control":"stop"}'
         else
-          echo "There are still scans in progress. Skipping shutdown for now."
-        fi
+          echo "Scan(s) still running. Skipping shutdown."
+        fi  
