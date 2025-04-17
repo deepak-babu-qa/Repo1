@@ -11,4 +11,4 @@ jobs:
       - name: 🔓 Unmask and print secret (debug use only)
         run: |
           echo "::remove-matcher owner=secret" # disables masking temporarily
-          echo "VERSION_NUMBER (unmasked): ${{ secrets.c }}"
+          echo "VERSION_NUMBER (unmasked): ${{ secrets.C }}"
