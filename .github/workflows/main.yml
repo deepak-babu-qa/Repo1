@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Print and add 3 to VERSION_NUMBER
         run: |
-          # Get the secret value
+          # Get the secret value (make sure it's treated as a number)
           VERSION_NUMBER=${{ secrets.C }}
-          
-          # Add 3 to the secret value
+
+          # Convert the secret to an integer and add 3
           UPDATED_VERSION=$((VERSION_NUMBER + 3))
 
-          # Print the result
-          echo "VERSION_NUMBER: $VERSION_NUMBER"
+          # Print the original and updated values
+          echo "Original VERSION_NUMBER: $VERSION_NUMBER"
           echo "Updated VERSION_NUMBER after adding 3: $UPDATED_VERSION"
