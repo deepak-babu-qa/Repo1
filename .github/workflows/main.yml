@@ -1,14 +1,23 @@
 name: SonarQube_ON
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   sonarqube_on:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: 🔓 Unmask and print secret (debug use only)
+      - name: Print and add 3 to VERSION_NUMBER
         run: |
-          echo "::remove-matcher owner=secret" # disables masking temporarily
-          echo "VERSION_NUMBER (unmasked): ${{ secrets.C }}"
+          # Get the secret value
+          VERSION_NUMBER=${{ secrets.C }}
+          
+          # Add 3 to the secret value
+          UPDATED_VERSION=$((VERSION_NUMBER + 3))
+
+          # Print the result
+          echo "VERSION_NUMBER: $VERSION_NUMBER"
+          echo "Updated VERSION_NUMBER after adding 3: $UPDATED_VERSION"
