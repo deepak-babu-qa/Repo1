@@ -11,4 +11,4 @@ jobs:
       - name: 🔎 Print Secret Values
         run: |
           echo "Printing secret values..."
-          echo "VERSION_NUMBER: ${{ secrets.c }}"
+          echo "VERSION_NUMBER: ${{ secrets.C }}"
