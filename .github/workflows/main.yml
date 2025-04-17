@@ -9,19 +9,7 @@ jobs:
     
     steps:
 
-    - name: Stop SonarQube if no scans are in progress
-      if: always()
-      run: |
-        echo "Checking for active SonarQube scans..."
-        RESPONSE=$(curl -s "http://13.201.109.77:9000/api/ce/activity?status=IN_PROGRESS")
-        TASKS_COUNT=$(echo "$RESPONSE" | jq '.tasks | length')
-        echo "Active scan count: $TASKS_COUNT"
-    
-        if [ "$TASKS_COUNT" -eq 0 ]; then
-          echo "No scans in progress. Stopping SonarQube..."
-          curl -X POST https://ftqp5itzh1.execute-api.ap-south-1.amazonaws.com/default/sonarqube_control \
-            -H "Content-Type: application/json" \
-            -d '{"control":"stop"}'
-        else
-          echo "Scan(s) still running. Skipping shutdown."
-        fi  
+    - name: 🔎 Print Secret Values
+        run: |
+          echo "Printing secret values..."
+          echo "VERSION_NUMBER: ${{ secrets.c }}"
