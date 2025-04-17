@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-
-    - name: 🔎 Print Secret Values
+      - name: 🔎 Print Secret Values
         run: |
           echo "Printing secret values..."
           echo "VERSION_NUMBER: ${{ secrets.c }}"
